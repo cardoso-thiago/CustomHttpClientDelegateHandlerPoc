@@ -27,6 +27,13 @@ var app = builder.Build();
 app.UseCorrelationIdMiddleware();
 ```
 
+- Obtenção do `HttpClient` e execução de requisição:
+
+```csharp
+var httpClient = httpClientFactory.GetCorrelationHttpClient();
+var response = await httpClient.GetAsync("/headers");
+```
+
 ## Testando
 
 - Chamada sem a passagem do id de correlação: `curl localhost:5082/hello`
